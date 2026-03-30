@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://puraqua.com.uy/sitemap.xml

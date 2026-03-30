@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.imagine.art)",
+      "WebFetch(domain:www.logoai.com)",
+      "WebFetch(domain:help.apiyi.com)",
+      "Bash(mv \"c:/Users/agust/OneDrive/PURAQUA/Website/logo-prompts.md\" \"c:/Users/agust/OneDrive/PURAQUA/Estrategia/logo-prompts.md\")",
+      "Bash(mv \"c:/Users/agust/OneDrive/PURAQUA/Website/lovable-prompt.md\" \"c:/Users/agust/OneDrive/PURAQUA/Estrategia/lovable-prompt.md\")"
+    ]
+  }
+}

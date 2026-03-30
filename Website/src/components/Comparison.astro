@@ -1,0 +1,68 @@
+---
+const rows = [
+  { label: "Costo mensual aprox.", puraqua: "~$200 UYU", embotellada: "~$2.000-5.000 UYU", jarra: "~$400 UYU", ninguno: "$0 pero..." },
+  { label: "Elimina cloro", puraqua: true, embotellada: true, jarra: "Parcial", ninguno: false },
+  { label: "Elimina metales pesados", puraqua: true, embotellada: true, jarra: false, ninguno: false },
+  { label: "Elimina bacterias", puraqua: true, embotellada: true, jarra: false, ninguno: false },
+  { label: "Disponibilidad", puraqua: "24/7 en tu canilla", embotellada: "Hay que comprar", jarra: "24/7 (lento)", ninguno: "24/7" },
+  { label: "Residuo plástico", puraqua: "Ninguno", embotellada: "Alto", jarra: "Bajo", ninguno: "Ninguno" },
+  { label: "Mantenimiento", puraqua: "Filtros 1x/año", embotellada: "Ninguno", jarra: "Filtros frecuentes", ninguno: "Ninguno" },
+];
+
+function displayValue(val: boolean | string) {
+  if (val === true) return { text: "✓", class: "text-success font-bold" };
+  if (val === false) return { text: "✗", class: "text-red-400 font-bold" };
+  return { text: String(val), class: "text-text-dark/70 text-sm" };
+}
+---
+
+<section class="py-20 bg-surface">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <p class="text-cyan-accent font-semibold uppercase tracking-widest text-sm mb-3">Comparativa</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-blue-dark mb-4">
+        ¿Por qué ósmosis inversa?
+      </h2>
+      <p class="text-text-dark/60 max-w-xl mx-auto">
+        Hay varias formas de mejorar el agua que tomás. Esta es la comparativa honesta.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-blue-sky/20 overflow-hidden shadow-sm">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-surface">
+              <th class="text-left px-6 py-4 text-text-dark/50 font-medium w-40"></th>
+              <th class="px-6 py-4 text-center">
+                <div class="flex flex-col items-center gap-1">
+                  <span class="bg-cyan-accent text-white text-xs font-bold px-3 py-0.5 rounded-full">Puraqua</span>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-center text-text-dark/60 font-medium">Agua embotellada</th>
+              <th class="px-6 py-4 text-center text-text-dark/60 font-medium">Filtro de jarra</th>
+              <th class="px-6 py-4 text-center text-text-dark/60 font-medium">Sin filtrar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => {
+              const pv = displayValue(row.puraqua);
+              const ev = displayValue(row.embotellada);
+              const jv = displayValue(row.jarra);
+              const nv = displayValue(row.ninguno);
+              return (
+                <tr class={`border-b border-surface last:border-0 ${i % 2 === 0 ? 'bg-white' : 'bg-surface/50'}`}>
+                  <td class="px-6 py-4 font-medium text-text-dark">{row.label}</td>
+                  <td class={`px-6 py-4 text-center bg-cyan-accent/5 ${pv.class}`}>{pv.text}</td>
+                  <td class={`px-6 py-4 text-center ${ev.class}`}>{ev.text}</td>
+                  <td class={`px-6 py-4 text-center ${jv.class}`}>{jv.text}</td>
+                  <td class={`px-6 py-4 text-center ${nv.class}`}>{nv.text}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

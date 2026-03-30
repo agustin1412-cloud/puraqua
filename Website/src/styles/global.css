@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta principal */
+  --color-blue-dark: #1a3a5c;
+  --color-blue-medium: #2c6faa;
+  --color-blue-light: #5ba3d9;
+  --color-cyan-accent: #00c8e0;
+
+  /* Paleta extendida */
+  --color-surface: #f0f7fc;
+  --color-background: #f8fafb;
+  --color-text-dark: #0f2a3d;
+  --color-success: #10b981;
+
+  /* Legado (mantener para compatibilidad) */
+  --color-blue-sky: #a8d4f0;
+  --color-gray-light: #f0f5fa;
+
+  /* Tipografía */
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+/* Animaciones de scroll */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.animate-fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.animate-fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }

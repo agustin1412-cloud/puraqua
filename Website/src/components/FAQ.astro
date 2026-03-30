@@ -1,0 +1,78 @@
+---
+const faqs = [
+  {
+    q: "¿Es difícil instalar el equipo?",
+    a: "No. El equipo se instala bajo la pileta de la cocina y viene con todo lo necesario. El proceso lleva menos de una hora y te guiamos paso a paso por WhatsApp. No necesitás plomero.",
+  },
+  {
+    q: "¿Cada cuánto hay que cambiar los filtros?",
+    a: "Los filtros de pre-filtración se cambian cada 6-12 meses según el uso. La membrana dura 2-3 años. El primer año de filtros está incluido en la compra. Te avisamos cuándo es el momento de cambiarlos.",
+  },
+  {
+    q: "¿Cuánto cuesta el mantenimiento anual?",
+    a: "Los repuestos para un año de uso cuestan entre $1.500 y $3.000 UYU aproximadamente, dependiendo del modelo y la cantidad de agua que uses. Siempre podés comprarnos los repuestos directamente.",
+  },
+  {
+    q: "¿El equipo desperdicia mucha agua?",
+    a: "Los equipos modernos de ósmosis inversa desperdician mucho menos que los de generaciones anteriores. Por cada litro purificado, se descartan 1-2 litros. Para uso doméstico habitual, el consumo extra es mínimo.",
+  },
+  {
+    q: "¿Funciona con la presión del agua de OSE?",
+    a: "Sí. Nuestros equipos funcionan perfectamente con la presión de red de OSE en todo Uruguay, tanto en Montevideo como en el interior.",
+  },
+  {
+    q: "¿Puedo pagar en cuotas?",
+    a: "Sí. Aceptamos MercadoPago con todas las tarjetas de crédito uruguayas. Consultanos por WhatsApp las opciones de cuotas disponibles.",
+  },
+  {
+    q: "¿Hacen envíos al interior?",
+    a: "Sí, enviamos a todo Uruguay. El costo y tiempo de envío varían según la zona. Consultanos por WhatsApp para tu departamento específico.",
+  },
+];
+---
+
+<section id="faq" class="py-20 bg-surface">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <p class="text-cyan-accent font-semibold uppercase tracking-widest text-sm mb-3">Preguntas frecuentes</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-blue-dark">
+        Todo lo que necesitás saber
+      </h2>
+    </div>
+
+    <div class="space-y-3" id="faq-list">
+      {faqs.map((faq, i) => (
+        <details class="group bg-white border border-blue-sky/20 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none hover:bg-surface transition-colors">
+            <span class="font-semibold text-blue-dark">{faq.q}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-cyan-accent shrink-0 transition-transform group-open:rotate-45"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-text-dark/70 leading-relaxed text-sm border-t border-surface pt-4">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="text-center text-sm text-text-dark/50 mt-8">
+      ¿Otra pregunta?{" "}
+      <a
+        href="https://wa.me/59899000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-cyan-accent hover:underline font-medium"
+      >
+        Escribinos por WhatsApp
+      </a>
+    </p>
+  </div>
+</section>
