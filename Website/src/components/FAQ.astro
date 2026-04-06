@@ -1,78 +1,107 @@
 ---
-const faqs = [
-  {
-    q: "¿Es difícil instalar el equipo?",
-    a: "No. El equipo se instala bajo la pileta de la cocina y viene con todo lo necesario. El proceso lleva menos de una hora y te guiamos paso a paso por WhatsApp. No necesitás plomero.",
-  },
-  {
-    q: "¿Cada cuánto hay que cambiar los filtros?",
-    a: "Los filtros de pre-filtración se cambian cada 6-12 meses según el uso. La membrana dura 2-3 años. El primer año de filtros está incluido en la compra. Te avisamos cuándo es el momento de cambiarlos.",
-  },
-  {
-    q: "¿Cuánto cuesta el mantenimiento anual?",
-    a: "Los repuestos para un año de uso cuestan entre $1.500 y $3.000 UYU aproximadamente, dependiendo del modelo y la cantidad de agua que uses. Siempre podés comprarnos los repuestos directamente.",
-  },
-  {
-    q: "¿El equipo desperdicia mucha agua?",
-    a: "Los equipos modernos de ósmosis inversa desperdician mucho menos que los de generaciones anteriores. Por cada litro purificado, se descartan 1-2 litros. Para uso doméstico habitual, el consumo extra es mínimo.",
-  },
-  {
-    q: "¿Funciona con la presión del agua de OSE?",
-    a: "Sí. Nuestros equipos funcionan perfectamente con la presión de red de OSE en todo Uruguay, tanto en Montevideo como en el interior.",
-  },
-  {
-    q: "¿Puedo pagar en cuotas?",
-    a: "Sí. Aceptamos MercadoPago con todas las tarjetas de crédito uruguayas. Consultanos por WhatsApp las opciones de cuotas disponibles.",
-  },
-  {
-    q: "¿Hacen envíos al interior?",
-    a: "Sí, enviamos a todo Uruguay. El costo y tiempo de envío varían según la zona. Consultanos por WhatsApp para tu departamento específico.",
-  },
-];
+import { whatsappURL } from '../data/config';
+
+const waURL = whatsappURL("Hola, tengo una pregunta");
 ---
 
-<section id="faq" class="py-20 bg-surface">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <p class="text-cyan-accent font-semibold uppercase tracking-widest text-sm mb-3">Preguntas frecuentes</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-blue-dark">
-        Todo lo que necesitás saber
-      </h2>
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="container">
+    <div class="faq__header">
+      <p class="section-label fade-up" style="color:var(--cyan);">Preguntas frecuentes</p>
+      <h2 class="section-h2 fade-up" id="faq-h">Todo lo que necesitás saber</h2>
     </div>
+    <div class="faq__list fade-up" role="list">
 
-    <div class="space-y-3" id="faq-list">
-      {faqs.map((faq, i) => (
-        <details class="group bg-white border border-blue-sky/20 rounded-xl overflow-hidden">
-          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none hover:bg-surface transition-colors">
-            <span class="font-semibold text-blue-dark">{faq.q}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-cyan-accent shrink-0 transition-transform group-open:rotate-45"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
-            </svg>
-          </summary>
-          <div class="px-6 pb-5 text-text-dark/70 leading-relaxed text-sm border-t border-surface pt-4">
-            {faq.a}
-          </div>
-        </details>
-      ))}
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq1" aria-expanded="false"/>
+        <label class="faq__q" for="faq1">
+          ¿Es difícil instalar el equipo?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">No. El equipo se instala bajo la pileta de la cocina y viene con todo lo necesario. El proceso lleva menos de una hora y te guiamos paso a paso por WhatsApp. No necesitás plomero.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq2"/>
+        <label class="faq__q" for="faq2">
+          ¿Cada cuánto hay que cambiar los filtros?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Los filtros de pre-filtración se cambian cada 6-12 meses según el uso. La membrana dura 2-3 años. El primer año de filtros está incluido en la compra. Te avisamos cuándo es el momento de cambiarlos.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq3"/>
+        <label class="faq__q" for="faq3">
+          ¿Cuánto cuesta el mantenimiento anual?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Los repuestos para un año de uso cuestan entre $1.500 y $3.000 UYU aproximadamente, dependiendo del modelo y la cantidad de agua que uses. Siempre podés comprarnos los repuestos directamente.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq4"/>
+        <label class="faq__q" for="faq4">
+          ¿El equipo desperdicia mucha agua?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Los equipos modernos de ósmosis inversa desperdician mucho menos que los de generaciones anteriores. Por cada litro purificado, se descartan 1-2 litros. Para uso doméstico habitual, el consumo extra es mínimo.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq5"/>
+        <label class="faq__q" for="faq5">
+          ¿Funciona con la presión del agua de OSE?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Sí. Nuestros equipos funcionan perfectamente con la presión de red de OSE en todo Uruguay, tanto en Montevideo como en el interior.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq6"/>
+        <label class="faq__q" for="faq6">
+          ¿Puedo pagar en cuotas?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Sí. Aceptamos MercadoPago con todas las tarjetas de crédito uruguayas. Consultanos por WhatsApp las opciones de cuotas disponibles.</div>
+      </div>
+
+      <div class="faq__item" role="listitem">
+        <input type="checkbox" id="faq7"/>
+        <label class="faq__q" for="faq7">
+          ¿Hacen envíos al interior?
+          <svg class="faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <div class="faq__a">Sí, enviamos a todo Uruguay. El costo y tiempo de envío varían según la zona. Consultanos por WhatsApp para tu departamento específico.</div>
+      </div>
+
     </div>
-
-    <p class="text-center text-sm text-text-dark/50 mt-8">
-      ¿Otra pregunta?{" "}
-      <a
-        href="https://wa.me/59899000000"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-cyan-accent hover:underline font-medium"
-      >
-        Escribinos por WhatsApp
-      </a>
+    <p class="faq__footer">
+      ¿Otra pregunta? <a href={waURL} target="_blank" rel="noopener">Escribinos por WhatsApp</a>
     </p>
   </div>
 </section>
+
+<style>
+  .faq { padding: 88px 0; background: var(--bg); }
+  .faq__header { text-align: center; max-width: 540px; margin: 0 auto 48px; }
+  .faq__list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .faq__item { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--white); overflow: hidden; }
+  .faq__q {
+    width: 100%; text-align: left; padding: 20px 24px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    font-family: var(--font-head); font-size: .95rem; font-weight: 600; color: var(--blue-dark);
+    cursor: pointer; transition: background .15s;
+  }
+  .faq__q:hover { background: var(--surface); }
+  .faq__icon { flex-shrink: 0; transition: transform .25s; color: var(--cyan); }
+  .faq__item input { display: none; }
+  .faq__item input:checked ~ .faq__q .faq__icon { transform: rotate(45deg); }
+  .faq__a {
+    max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s;
+    font-size: .9rem; color: var(--text-muted); line-height: 1.7;
+  }
+  .faq__item input:checked ~ .faq__a { max-height: 300px; padding: 0 24px 20px; }
+  .faq__footer { text-align: center; font-size: .875rem; color: var(--text-muted); margin-top: 32px; }
+  .faq__footer a { color: var(--cyan); font-weight: 500; }
+</style>

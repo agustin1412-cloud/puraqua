@@ -1,6 +1,10 @@
+import { whatsappURL } from "./config";
+
 export const product = {
   name: "Equipo Puraqua Pro",
   tagline: "Purificación por Ósmosis Inversa",
+  image: "/images/product-detail.webp",
+  heroImage: "/images/product-hero.webp",
   description:
     "Equipo de ósmosis inversa de calidad premium con 7 etapas de filtración, membrana de alta eficiencia, mineralizador y filtro UV. Ideal para hogares y pequeñas empresas.",
   price: {
@@ -32,6 +36,5 @@ export const product = {
     "Manual de instalación",
     "Soporte post-venta por WhatsApp",
   ],
-  whatsappURL:
-    "https://wa.me/59899000000?text=Hola%2C%20quiero%20comprar%20un%20equipo%20Puraqua%20Pro",
+  whatsappURL: whatsappURL("Hola, quiero comprar un equipo Puraqua Pro"),
 };

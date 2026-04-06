@@ -1,0 +1,249 @@
+---
+import { config, whatsappURL } from '../data/config';
+
+const waURL = whatsappURL("Hola, quiero consultar sobre el equipo Puraqua");
+const formAction = `https://formspree.io/f/${config.formspreeId}`;
+---
+
+<section class="contact-ed" id="contacto" aria-labelledby="contact-ed-h">
+  <div class="contact-ed__split">
+    <!-- Panel izquierdo -->
+    <div class="contact-ed__left">
+      <div class="contact-ed__watermark" aria-hidden="true">CONTACTO</div>
+      <div>
+        <h2 class="contact-ed__headline" id="contact-ed-h">
+          Escribinos<span class="accent">.</span>
+        </h2>
+        <p class="contact-ed__body">
+          Consultá sobre el equipo, precios, instalación o mantenimiento. Te respondemos rápido, todos los días.
+        </p>
+        <hr class="contact-ed__rule" aria-hidden="true"/>
+      </div>
+      <div class="contact-ed__channels" aria-label="Canales de contacto">
+        <a href={waURL} class="contact-ed__channel" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+          <span class="contact-ed__channel-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.995 0C5.375 0 0 5.372 0 11.988c0 2.113.555 4.094 1.523 5.812L0 24l6.335-1.652A11.956 11.956 0 0011.995 24C18.617 24 24 18.628 24 12.012 24 5.372 18.617 0 11.995 0zm0 21.81c-1.942 0-3.744-.52-5.295-1.42l-.379-.224-3.933 1.025 1.051-3.83-.248-.393A9.714 9.714 0 012.19 12.01c0-5.41 4.404-9.81 9.805-9.81 5.404 0 9.807 4.4 9.807 9.81 0 5.406-4.403 9.81-9.807 9.81z"/></svg>
+          </span>
+          WhatsApp&ensp;&#x2197;
+        </a>
+        <a href={`mailto:${config.email}`} class="contact-ed__channel" aria-label="Enviar email">
+          <span class="contact-ed__channel-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          {config.email}
+        </a>
+      </div>
+    </div>
+
+    <!-- Panel derecho — formulario -->
+    <div class="contact-ed__right">
+      <div class="contact-ed__form-head">
+        <p class="contact-ed__form-title">Mandanos tu consulta</p>
+        <p class="contact-ed__form-sub">Respondemos en menos de 24 horas.</p>
+      </div>
+      <form id="contact-form" action={formAction} method="POST" novalidate>
+        <div class="contact-ed__row">
+          <div class="contact-ed__field">
+            <label class="contact-ed__label" for="cf-name">Nombre</label>
+            <input class="contact-ed__input" id="cf-name" type="text" name="nombre" placeholder="Tu nombre" required autocomplete="name"/>
+          </div>
+          <div class="contact-ed__field">
+            <label class="contact-ed__label" for="cf-email">Email</label>
+            <input class="contact-ed__input" id="cf-email" type="email" name="email" placeholder="tu@email.com" required autocomplete="email"/>
+          </div>
+        </div>
+        <div class="contact-ed__field">
+          <label class="contact-ed__label" for="cf-phone">Teléfono <span class="contact-ed__label-optional">(opcional)</span></label>
+          <input class="contact-ed__input" id="cf-phone" type="tel" name="telefono" placeholder="09X XXX XXX" autocomplete="tel"/>
+        </div>
+        <div class="contact-ed__field">
+          <label class="contact-ed__label" for="cf-msg">Mensaje</label>
+          <textarea class="contact-ed__textarea" id="cf-msg" name="mensaje" placeholder="Contanos tu consulta: para qué lo necesitás, si es hogar o empresa..." required></textarea>
+        </div>
+        <button class="contact-ed__submit" type="submit" id="cf-submit">
+          Enviar consulta
+          <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5"/></svg>
+        </button>
+        <div class="contact-ed__feedback contact-ed__feedback--success" id="cf-success" role="alert" aria-live="polite">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" aria-hidden="true" style="flex-shrink:0"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span><strong>Consulta enviada.</strong> Te respondemos en menos de 24 horas. Si es urgente, escribinos por WhatsApp.</span>
+        </div>
+        <div class="contact-ed__feedback contact-ed__feedback--error" id="cf-error" role="alert" aria-live="polite">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="cf-error-msg">No se pudo enviar el mensaje. Intentalo de nuevo o escribinos por WhatsApp.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  if (form) {
+    const btn = document.getElementById('cf-submit') as HTMLButtonElement;
+    const success = document.getElementById('cf-success') as HTMLElement;
+    const error = document.getElementById('cf-error') as HTMLElement;
+    const errorMsg = document.getElementById('cf-error-msg') as HTMLElement;
+    const arrowSVG = '<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5"/></svg>';
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      success.classList.remove('visible');
+      error.classList.remove('visible');
+      btn.disabled = true;
+      btn.innerHTML = 'Enviando\u2026';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(res) {
+        if (res.ok) {
+          success.classList.add('visible');
+          form.reset();
+          setTimeout(function() {
+            btn.disabled = false;
+            btn.innerHTML = 'Enviar consulta ' + arrowSVG;
+          }, 4000);
+        } else {
+          return res.json().then(function(d: any) { throw d; });
+        }
+      })
+      .catch(function(d: any) {
+        const msg = (d && d.errors && d.errors.length)
+          ? d.errors.map((e: any) => e.message).join(', ')
+          : 'No se pudo enviar el mensaje. Intentalo de nuevo.';
+        errorMsg.textContent = msg;
+        error.classList.add('visible');
+        btn.disabled = false;
+        btn.innerHTML = 'Enviar consulta ' + arrowSVG;
+      });
+    });
+  }
+</script>
+
+<style>
+  .contact-ed { position: relative; overflow: hidden; background: var(--bg); }
+  .contact-ed__split {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    min-height: 640px;
+  }
+  .contact-ed__left {
+    background: var(--blue-dark);
+    padding: 72px 56px 64px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .contact-ed__watermark {
+    position: absolute;
+    bottom: -24px; left: -16px;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(5rem, 10vw, 8.5rem);
+    line-height: 1;
+    letter-spacing: -.04em;
+    color: rgba(255,255,255,.04);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .contact-ed__headline {
+    font-family: var(--font-head); font-weight: 800;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.05; letter-spacing: -.04em;
+    color: var(--white); margin-bottom: 20px;
+  }
+  .contact-ed__headline .accent { color: var(--cyan); }
+  .contact-ed__body {
+    font-size: .95rem; color: rgba(255,255,255,.75);
+    line-height: 1.7; max-width: 320px; margin-bottom: 40px;
+  }
+  .contact-ed__rule { width: 40px; height: 2px; background: var(--cyan); margin-bottom: 32px; border: none; }
+  .contact-ed__channels { display: flex; flex-direction: column; gap: 14px; }
+  .contact-ed__channel {
+    display: flex; align-items: center; gap: 12px;
+    font-size: .875rem; color: rgba(255,255,255,.75); transition: color .2s;
+  }
+  .contact-ed__channel:hover { color: var(--white); }
+  .contact-ed__channel-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background .2s, border-color .2s;
+  }
+  .contact-ed__channel:hover .contact-ed__channel-icon {
+    background: rgba(0,200,224,.15); border-color: rgba(0,200,224,.4);
+  }
+  .contact-ed__right {
+    background: var(--white);
+    padding: 72px 56px 64px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-ed__form-head { margin-bottom: 36px; }
+  .contact-ed__form-title {
+    font-family: var(--font-head); font-weight: 700;
+    font-size: 1.2rem; color: var(--blue-dark); margin-bottom: 6px;
+  }
+  .contact-ed__form-sub { font-size: .875rem; color: var(--text-muted); }
+  .contact-ed__row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 16px;
+  }
+  .contact-ed__field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .contact-ed__label {
+    font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .contact-ed__label-optional { font-weight: 400; opacity: .6; letter-spacing: 0; text-transform: none; margin-left: 4px; }
+  .contact-ed__input,
+  .contact-ed__textarea {
+    font-family: var(--font-body); font-size: .9rem; color: var(--text);
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    width: 100%; transition: border-color .15s, box-shadow .15s, background .15s;
+    outline: none; -webkit-appearance: none;
+  }
+  .contact-ed__input::placeholder,
+  .contact-ed__textarea::placeholder { color: rgba(74,107,132,.4); }
+  .contact-ed__input:focus,
+  .contact-ed__textarea:focus {
+    border-color: var(--cyan); background: var(--white);
+    box-shadow: 0 0 0 3px rgba(79,110,247,.1);
+  }
+  .contact-ed__textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+  .contact-ed__submit {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-head); font-size: .95rem; font-weight: 700;
+    background: var(--blue-dark); color: var(--white);
+    padding: 14px 28px; border-radius: 100px; border: none;
+    cursor: pointer; transition: transform .15s, box-shadow .15s, background .15s;
+    margin-top: 8px; align-self: flex-start;
+  }
+  .contact-ed__submit:hover {
+    background: var(--blue-medium); transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,58,92,.25);
+  }
+  .contact-ed__submit:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
+  .contact-ed__submit svg { width: 18px; height: 18px; transition: transform .2s; }
+  .contact-ed__submit:not(:disabled):hover svg { transform: translateX(3px); }
+  .contact-ed__feedback {
+    display: none; align-items: flex-start; gap: 12px;
+    padding: 16px 20px; border-radius: var(--radius-md);
+    font-size: .9rem; line-height: 1.5; margin-top: 20px;
+  }
+  .contact-ed__feedback--success {
+    background: rgba(16,185,129,.08);
+    border: 1px solid rgba(16,185,129,.25); color: #065f46;
+  }
+  .contact-ed__feedback--error {
+    background: rgba(220,38,38,.06);
+    border: 1px solid rgba(220,38,38,.2); color: #991b1b;
+  }
+  .contact-ed__feedback.visible { display: flex; }
+</style>

@@ -1,47 +1,76 @@
 ---
-const stats = [
-  {
-    value: "~2 mg/L",
-    label: "Cloro residual",
-    desc: "El agua de OSE llega con cloro para desinfectarla. Necesario en la red, pero afecta el sabor y olor en tu canilla.",
-  },
-  {
-    value: "100+",
-    label: "Contaminantes posibles",
-    desc: "Sedimentos, metales pesados, microplásticos y compuestos orgánicos pueden estar presentes según la zona y las cañerías.",
-  },
-  {
-    value: "25x",
-    label: "Más cara el agua embotellada",
-    desc: "Comprar agua embotellada cuesta hasta 25 veces más que purificarla en casa con ósmosis inversa.",
-  },
-];
+// No external data needed — content is hardcoded from v2
 ---
 
-<section class="py-20 bg-blue-dark text-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <p class="text-cyan-accent font-semibold uppercase tracking-widest text-sm mb-3">El problema</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mb-4">
-        ¿Sabés qué hay en el agua de tu canilla?
-      </h2>
-      <p class="text-white/70 text-lg max-w-xl mx-auto">
-        El agua de OSE cumple las normas de potabilidad, pero eso no significa que sea la mejor opción para tomar todos los días.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      {stats.map((stat) => (
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-colors">
-          <p class="font-display font-extrabold text-4xl text-cyan-accent mb-2">{stat.value}</p>
-          <p class="font-semibold text-white mb-2">{stat.label}</p>
-          <p class="text-white/60 text-sm leading-relaxed">{stat.desc}</p>
+<section class="problem" id="problema" aria-labelledby="problem-h">
+  <div class="container">
+    <p class="section-label fade-up">El problema</p>
+    <h2 class="section-h2 fade-up" id="problem-h">¿Sabés qué hay en el<br/>agua de tu canilla?</h2>
+    <p class="problem__sub">El agua de OSE cumple las normas de potabilidad, pero eso no significa que sea la mejor opción para tomar todos los días.</p>
+    <div class="problem__grid problem__grid--3 fade-up" role="list">
+      <div class="problem__card" role="listitem">
+        <div class="problem__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="17" stroke="#00c8e0" stroke-width="1.5"/>
+            <path d="M18 10v8l5 5" stroke="#00c8e0" stroke-width="2" stroke-linecap="round"/>
+          </svg>
         </div>
-      ))}
+        <div class="problem__num">~2 mg/L</div>
+        <p class="problem__label">Cloro residual</p>
+        <div class="problem__desc">El agua de OSE llega con cloro para desinfectarla. Necesario en la red, pero afecta el sabor y olor en tu canilla.</div>
+      </div>
+      <div class="problem__card" role="listitem">
+        <div class="problem__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="17" stroke="#00c8e0" stroke-width="1.5"/>
+            <path d="M12 18h12M18 12v12" stroke="#00c8e0" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="problem__num">100+</div>
+        <p class="problem__label">Contaminantes posibles</p>
+        <div class="problem__desc">Sedimentos, metales pesados, microplásticos y compuestos orgánicos pueden estar presentes según la zona y las cañerías.</div>
+      </div>
+      <div class="problem__card" role="listitem">
+        <div class="problem__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="17" stroke="#00c8e0" stroke-width="1.5"/>
+            <path d="M18 8c0 0-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z" stroke="#00c8e0" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="problem__num">25x</div>
+        <p class="problem__label">Más cara el agua embotellada</p>
+        <div class="problem__desc">Comprar agua embotellada cuesta hasta 25 veces más que purificarla en casa con ósmosis inversa.</div>
+      </div>
     </div>
-
-    <p class="text-center text-white/50 text-sm mt-10">
-      Existe una solución simple, accesible y permanente. ↓
-    </p>
+    <p class="problem__footer">Existe una solución simple, accesible y permanente. ↓</p>
   </div>
 </section>
+
+<style>
+  .problem {
+    background: var(--blue-dark); color: var(--white);
+    padding: 80px 0;
+  }
+  .problem .section-h2 { color: var(--white); text-align: right; }
+  .problem__sub { color: rgba(255,255,255,.65); font-size: 1.05rem; margin-top: 12px; max-width: 560px; text-align: right; margin-left: auto; }
+  .problem__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    margin-top: 48px; border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .problem__card {
+    background: rgba(255,255,255,.055);
+    padding: 32px;
+    text-align: right;
+    transition: background .2s;
+  }
+  .problem__card:hover { background: rgba(255,255,255,.09); }
+  .problem__grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .problem__num {
+    font-family: var(--font-head); font-size: 2.6rem; font-weight: 800;
+    color: var(--cyan); line-height: 1;
+  }
+  .problem__label { font-weight: 600; color: var(--white); margin-top: 4px; margin-bottom: 8px; font-size: .95rem; }
+  .problem__desc { font-size: .85rem; color: rgba(255,255,255,.65); line-height: 1.55; }
+  .problem__icon { margin-bottom: 16px; }
+  .problem__footer { text-align: center; color: rgba(255,255,255,.35); font-size: .85rem; margin-top: 40px; }
+</style>

@@ -33,27 +33,39 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://puraqua.
     <link rel="icon" type="image/png" href="/images/logo.png" />
     <title>{title} | Puraqua</title>
 
-    <!-- Tipografía: Plus Jakarta Sans + DM Sans -->
+    <!-- Tipografía: Plus Jakarta Sans + DM Sans + Cinzel -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=DM+Sans:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-background text-text-dark antialiased">
+  <body>
     <slot />
+
+    <!-- IntersectionObserver for scroll animations (.fade-up) -->
+    <script>
+      (function() {
+        var els = document.querySelectorAll('.fade-up');
+        if (!els.length || !('IntersectionObserver' in window)) {
+          els.forEach(function(el) { el.classList.add('visible'); });
+          return;
+        }
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function(el) { observer.observe(el); });
+      })();
+    </script>
   </body>
 </html>
 
 <style is:global>
   @import "../styles/global.css";
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-  }
-
-  body {
-    font-family: var(--font-sans);
-  }
 </style>
